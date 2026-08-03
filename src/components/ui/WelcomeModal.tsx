@@ -9,11 +9,9 @@ export default function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const shown = localStorage.getItem("fd_welcome_shown");
-    if (!shown) {
-      const timer = setTimeout(() => setIsOpen(true), 1000);
-      return () => clearTimeout(timer);
-    }
+    // Show modal 1 second after homepage loads — every time
+    const timer = setTimeout(() => setIsOpen(true), 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -25,7 +23,6 @@ export default function WelcomeModal() {
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem("fd_welcome_shown", "true");
   };
 
   return (
@@ -95,12 +92,6 @@ export default function WelcomeModal() {
                 </div>
 
                 {/* Badge */}
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3.5 py-1.5">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
-                  <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-blue-200 sm:text-[11px]">
-                    Premium Presentation
-                  </span>
-                </div>
 
                 {/* Headline */}
                 <h2 className="mb-5 text-[26px] font-semibold leading-[1.15] tracking-tight text-white sm:text-[30px] md:text-[34px]">
@@ -121,7 +112,7 @@ export default function WelcomeModal() {
                     <span className="font-medium text-blue-200">
                       premium digital brand
                     </span>{" "}
-                    — built for growth, visibility, automation, and the
+                 built for growth, visibility, automation, and the
                     AI-powered future of search.
                   </p>
 
@@ -142,7 +133,7 @@ export default function WelcomeModal() {
                   </p>
 
                   <p>
-                    Your customers won&apos;t just find you —{" "}
+                    Your customers won&apos;t just find you, {" "}
                     <span className="font-medium text-white">
                       they&apos;ll trust you
                     </span>
